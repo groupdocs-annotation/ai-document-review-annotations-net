@@ -1,0 +1,40 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+      - name: Smoke test
+        run: dotnet run --project src/AiReview -c Release --no-build -- --help
+
+      # Without a licence GroupDocs.Annotation runs in evaluation mode: the document is
+      # annotated but the output carries evaluation marks. The step is informational.
+      - name: Annotate the sample
+        continue-on-error: true
+        run: dotnet run --project src/AiReview -c Release --no-build -- review samples/service-agreement.docx

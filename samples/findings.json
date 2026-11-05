@@ -1,0 +1,27 @@
+[
+  {
+    "quote": "pay all invoices within ninety days",
+    "comment": "Ninety-day payment terms are three times our standard. Ask for thirty days.",
+    "severity": "high"
+  },
+  {
+    "quote": "unlimited liability for any loss arising from the services",
+    "comment": "Unlimited liability is not acceptable. Cap it at the fees paid in the preceding twelve months.",
+    "severity": "high"
+  },
+  {
+    "quote": "transferred to any country where the supplier operates",
+    "comment": "This allows transfers with no safeguards. Name the countries and the transfer mechanism.",
+    "severity": "high"
+  },
+  {
+    "quote": "renews automatically unless either party gives notice",
+    "comment": "Auto-renewal with no notice window. State how many days before the term ends notice is due.",
+    "severity": "medium"
+  },
+  {
+    "quote": "laws of the State of Delaware",
+    "comment": "Confirm Delaware is acceptable; our other agreements use the courts of the customer's seat.",
+    "severity": "low"
+  }
+]
